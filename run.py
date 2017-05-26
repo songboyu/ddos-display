@@ -21,6 +21,7 @@ class iApplication(web.Application):
     
         handlers = [
             (r"^/$", MainHandler),
+            (r"^/signin", MainHandler),
             (r"^/static/(.*)", web.StaticFileHandler, dict(path=settings['static'])),
         ]
         
@@ -33,7 +34,7 @@ class iApplication(web.Application):
 
 class MainHandler(WiseHandler):
     def get(self):
-        self.render("index.html")
+        self.render("pages-signin.html")
 
 class Watcher:
     def __init__(self):

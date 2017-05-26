@@ -9,7 +9,7 @@ db = torndb.Connection(db_server, db_database, db_username, db_password)
 
 class Attacking_Hosts_Data_Handler(WiseHandler):
     def get(self):
-        table = 'attacking_hosts'
+        table = 'ddos_count'
         try:
             sql = "select * from %s" % table
             results = db.query(sql)
