@@ -1,1 +1,0 @@
-(nohup python run.py > log/api.log 2>&1 &)

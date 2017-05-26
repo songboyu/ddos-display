@@ -23,3 +23,10 @@ class Attacking_Hosts_Page_Handler(WiseHandler):
     def get(self):
         self.render("attack/attacking_hosts.html")
 
+class Under_Attack_Page_Handler(WiseHandler):
+    def post(self):
+
+
+class Under_Attack_Page_Handler(WiseHandler):
+    def get(self):
+        self.render("attack/under_attack.html")
