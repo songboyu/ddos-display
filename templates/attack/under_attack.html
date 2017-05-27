@@ -16,7 +16,7 @@
 	<![endif]-->
     <style>
 	.chart{
-        height: 300px;
+        height: 350px;
         width: 50%;
         float: left;
     }
@@ -342,34 +342,22 @@
         <script>
 
             init.push(function () {
-                var data = [];
-                var value = Math.random() * 1000;
-                var now = new Date();
+                var api_url = "http://10.0.3.11:1984/attack/under_attack_data";
 
-                function randomData() {
-                    now = new Date();
-                    value = value + Math.random() * 21 - 10;
-                    return {
-                        name: now.toString(),
-                        value: [
-                            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/') + " " + [now.getHours(), now.getMinutes(), now.getSeconds()].join(':'),
-                            Math.round(value)
-                        ]
-                    }
-                }
+                var chart1 = echarts.init(document.getElementById('echart1'), 'dark');
+                var chart2 = echarts.init(document.getElementById('echart2'), 'dark');
 
-                data.push(randomData());
+                var chart1_data = [];
+                var chart2_data = [];
 
                 var option = {
-                    title: {
-                        text: '每秒请求量'
-                    },
+
                     tooltip: {
                         trigger: 'axis',
                         formatter: function (params) {
                             params = params[0];
                             var date = new Date(params.name);
-                            return date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' : ' + params.value[1];
+                            return params.value[0] + ' : ' + params.value[1];
                         },
                         axisPointer: {
                             animation: false
@@ -391,30 +379,67 @@
                     series: [{
                         type: 'line',
                         showSymbol: false,
-                        hoverAnimation: true,
-                        data: data
+                        hoverAnimation: true
                     }]
                 };
-                var myChart = echarts.init(document.getElementById('echart'), 'dark');
-                myChart.setOption(option);
-
-                setInterval(function () {
-                    if(data.length >= 500) {
-                        data.shift();
+                chart1.setOption(option);
+                chart2.setOption(option);
+                chart1.setOption({
+                    title: {
+                        text: '每秒请求量'
                     }
-                    data.push(randomData());
+                });
+                chart2.setOption({
+                    title: {
+                        text: '总请求量'
+                    }
+                });
+                var sync_chart = function() {
+                    $.ajax({
+                        type: "GET",
+                        url: api_url,
+                        dataType: "json",
+                        success: function (data) {
+                            var point = [
+                                data.time,
+                                data.per_senconds
+                            ]
+                            if(chart1_data.length >= 500) {
+                                chart1_data.shift();
+                            }
+                            chart1_data.push(point);
+                            chart1.setOption({
+                                series: [{data: chart1_data}]
+                            });
 
-                    myChart.setOption({
-                        series: [{
-                            data: data
-                        }]
+                            point = [
+                                data.time,
+                                data.accumulate
+                            ]
+                            if(chart2_data.length >= 500) {
+                                chart2_data.shift();
+                            }
+                            chart2_data.push(point);
+                            chart2.setOption({
+                                series: [{data: chart2_data}]
+                            });
+
+                            setTimeout(sync_chart, 2000);
+                        }
                     });
-                    console.log(data[data.length-1]);
-                }, 1000);
+                }
+
+                sync_chart();
             });
         </script>
         <!-- / Javascript -->
-        <div id="echart" class="chart"></div>
+        <div id="echart1" class="chart"></div>
+        <div id="echart2" class="chart"></div>
+
+        <div class="row">
+            <div class="col-md-8">.col-md-8</div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
 	</div> <!-- / #content-wrapper -->
 	<div id="main-menu-bg"></div>
 </div> <!-- / #main-wrapper -->
