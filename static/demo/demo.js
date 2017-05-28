@@ -224,16 +224,16 @@ var activateTheme = function (btns) {
 var panel_width = 260;
 
 var demo_themes = [
-  { name: 'default', title: 'Default', img: 'assets/demo/themes/default.png' },
-  { name: 'asphalt', title: 'Asphalt', img: 'assets/demo/themes/asphalt.png' },
-  { name: 'purple-hills', title: 'Purple Hills', img: 'assets/demo/themes/purple-hills.png' },
-  { name: 'adminflare',  title: 'Adminflare', img: 'assets/demo/themes/adminflare.png' },
-  { name: 'dust',  title: 'Dust', img: 'assets/demo/themes/dust.png' },
-  { name: 'frost',  title: 'Frost', img: 'assets/demo/themes/frost.png' },
-  { name: 'fresh',  title: 'Fresh', img: 'assets/demo/themes/fresh.png' },
-  { name: 'silver',  title: 'Silver', img: 'assets/demo/themes/silver.png' },
-  { name: 'clean',  title: 'Clean', img: 'assets/demo/themes/clean.png' },
-  { name: 'white',  title: 'White', img: 'assets/demo/themes/white.png' }
+  { name: 'default', title: 'Default', img: '/static/demo/themes/default.png' },
+  { name: 'asphalt', title: 'Asphalt', img: '/static/demo/themes/asphalt.png' },
+  { name: 'purple-hills', title: 'Purple Hills', img: '/static/demo/themes/purple-hills.png' },
+  { name: 'adminflare',  title: 'Adminflare', img: '/static/demo/themes/adminflare.png' },
+  { name: 'dust',  title: 'Dust', img: '/static/demo/themes/dust.png' },
+  { name: 'frost',  title: 'Frost', img: '/static/demo/themes/frost.png' },
+  { name: 'fresh',  title: 'Fresh', img: '/static/demo/themes/fresh.png' },
+  { name: 'silver',  title: 'Silver', img: '/static/demo/themes/silver.png' },
+  { name: 'clean',  title: 'Clean', img: '/static/demo/themes/clean.png' },
+  { name: 'white',  title: 'White', img: '/static/demo/themes/white.png' }
 ];
 
 var demo_settings = loadDemoSettings();
