@@ -18,6 +18,8 @@
 	<link href="/static/stylesheets/rtl.min.css" rel="stylesheet" type="text/css">
 	<link href="/static/stylesheets/themes.min.css" rel="stylesheet" type="text/css">
 
+    <link rel="shortcut icon" href="/static/favicon.ico"/>
+
 	<!--[if lt IE 9]>
 		<script src="/static/javascripts/ie.min.js"></script>
 	<![endif]-->
@@ -89,7 +91,7 @@
 		<!-- Background overlay -->
 		<div class="overlay"></div>
 		<!-- Replace this with your bg image -->
-		<img src="/static/demo/signin-bg-1.jpg" alt="">
+		<img src="/static/demo/signin-bg-3.jpg" alt="">
 	</div>
 	<!-- / Page background -->
 
@@ -118,7 +120,7 @@
 		<div class="signin-form">
 
 			<!-- Form -->
-			<form action="index.html" id="signin-form_id">
+			<form action="/signin" id="signin-form_id" method="post">
 				<div class="signin-text">
 					<span>Sign In to your account</span>
 				</div> <!-- / .signin-text -->
@@ -134,7 +136,7 @@
 				</div> <!-- / Password -->
 
 				<div class="form-actions">
-					<input type="submit" value="SIGN IN" class="signin-btn bg-primary">
+					<input id="signin" type="submit" value="SIGN IN" class="signin-btn bg-primary">
 					<a href="#" class="forgot-password" id="forgot-password-link">Forgot your password?</a>
 				</div> <!-- / .form-actions -->
 			</form>
@@ -234,7 +236,7 @@
 		// Validate password
 		$("#password_id").rules("add", {
 			required: true,
-			minlength: 6
+			minlength: 4
 		});
 	});
 

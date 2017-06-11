@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>攻击主机列表</title>
+	<title>攻击者发起请求数</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<link href="/static/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="/static/stylesheets/pixel-admin.min.css" rel="stylesheet" type="text/css">
@@ -15,128 +15,57 @@
 		<script src="/static/javascripts/ie.min.js"></script>
 	<![endif]-->
     <style>
-	.center{
-		text-align: center;
-	}
+        #content-wrapper{
+            padding-top: 0px;
+            padding-left: 70px;
+        }
+        .center{
+            text-align: center;
+        }
+        .chart{
+            height: 400px;
+            width: 100%;
+            float: left;
+        }
+        .row{
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        .output{
+            float: left;
+            height: 400px;
+            font-family: monospace;
+            background: #fef8ef;
+            color: rgb(51, 51, 51);
+            border:1px solid #555;
+            overflow-y: scroll;
+        }
 	</style>
 </head>
-<body class="theme-dust main-menu-animated main-navbar-fixed main-menu-fixed">
+<body class="theme-asphalt main-menu-animated main-navbar-fixed main-menu-fixed mmc">
 
 <script>var init = [];</script>
 {#<!-- Demo script --> <script src="/static/demo/demo.js"></script> <!-- / Demo script -->#}
 
 <div id="main-wrapper">
-
-
 <!-- 2. $MAIN_NAVIGATION ===========================================================================
 
 	Main navigation
 -->
-	<div id="main-navbar" class="navbar navbar-inverse" role="navigation">
+	<div id="main-navbar" class="" role="navigation">
 		<!-- Main menu toggle -->
 		<button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span></button>
-		
+
 		<div class="navbar-inner">
-			<!-- Main navbar header -->
-			<div class="navbar-header">
-
-				<!-- Logo -->
-				<a href="index.html" class="navbar-brand">
-					<div><img alt="Pixel Admin" src="/static/images/pixel-admin/main-navbar-logo.png"></div>
-					PixelAdmin
-				</a>
-
-				<!-- Main navbar toggle -->
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse"><i class="navbar-icon fa fa-bars"></i></button>
-
-			</div> <!-- / .navbar-header -->
 
 			<div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
-				<div>
-					<ul class="nav navbar-nav">
-						<li>
-							<a href="#">Home</a>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">First item</a></li>
-								<li><a href="#">Second item</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Third item</a></li>
-							</ul>
-						</li>
-					</ul> <!-- / .navbar-nav -->
-
-					<div class="right clearfix">
-						<ul class="nav navbar-nav pull-right right-navbar-nav">
-							<li>
-								<form class="navbar-form pull-left">
-									<input type="text" class="form-control" placeholder="Search">
-								</form>
-							</li>
-
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
-									<img src="/static/images/pixel-admin/avatar.jpg">
-									<span>DDOS</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#"><span class="label label-warning pull-right">New</span>Profile</a></li>
-									<li><a href="#"><span class="badge badge-primary pull-right">New</span>Account</a></li>
-									<li><a href="#"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
-									<li class="divider"></li>
-									<li><a href="/signin"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
-								</ul>
-							</li>
-						</ul> <!-- / .navbar-nav -->
-					</div> <!-- / .right -->
 				</div>
 			</div> <!-- / #main-navbar-collapse -->
 		</div> <!-- / .navbar-inner -->
 	</div> <!-- / #main-navbar -->
 <!-- /2. $END_MAIN_NAVIGATION -->
-
-
-<!-- 4. $MAIN_MENU =================================================================================
-
-		Main menu
-		
-		Notes:
-		* to make the menu item active, add a class 'active' to the <li>
-		  example: <li class="active">...</li>
-		* multilevel submenu example:
-			<li class="mm-dropdown">
-			  <a href="#"><span class="mm-text">Submenu item text 1</span></a>
-			  <ul>
-				<li>...</li>
-				<li class="mm-dropdown">
-				  <a href="#"><span class="mm-text">Submenu item text 2</span></a>
-				  <ul>
-					<li>...</li>
-					...
-				  </ul>
-				</li>
-				...
-			  </ul>
-			</li>
--->
 	<div id="main-menu" role="navigation">
 		<div id="main-menu-inner">
-			<div class="menu-content top" id="menu-content-demo">
-				<div>
-					<div class="text-bg"><span class="text-slim">Welcome,</span> <span class="text-semibold">DDOS</span></div>
-
-					<img src="/static/images/pixel-admin/avatar.jpg" alt="" class="">
-					<div class="btn-group">
-						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-envelope"></i></a>
-						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-user"></i></a>
-						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-cog"></i></a>
-						<a href="#" class="btn btn-xs btn-danger btn-outline dark"><i class="fa fa-power-off"></i></a>
-					</div>
-					<a href="#" class="close">&times;</a>
-				</div>
-			</div>
 			<ul class="navigation">
 				<li>
 					<a href="index.html"><i class="menu-icon fa fa-dashboard"></i><span class="mm-text">Dashboard</span></a>
@@ -145,7 +74,7 @@
 					<a href="#"><i class="menu-icon fa fa-th"></i><span class="mm-text">攻击者视角</span></a>
 					<ul>
 						<li>
-							<a tabindex="-1" href="/attack/attacking_hosts"><i class="menu-icon fa fa-th-list"></i><span class="mm-text">攻击主机列表</span></a>
+							<a tabindex="-1" href="/attack/attacking_hosts"><i class="menu-icon fa fa-th-list"></i><span class="mm-text">攻击者发起请求数</span></a>
 						</li>
 					</ul>
 				</li>
@@ -153,12 +82,22 @@
 					<a href="#"><i class="menu-icon fa fa-tasks"></i><span class="mm-text">被攻击者视角</span></a>
 					<ul>
 						<li>
-							<a tabindex="-1" href="/attack/under_attack"><i class="menu-icon fa fa-bar-chart-o"></i><span class="mm-text">被攻击服务器流量</span></a>
+							<a tabindex="-1" href="/attack/under_attack"><i class="menu-icon fa fa-bar-chart-o"></i><span class="mm-text">被攻击nginx服务器收到请求数</span></a>
 						</li>
 					</ul>
 				</li>
-				<li>
-					<a href="widgets.html"><i class="menu-icon fa fa-flask"></i><span class="mm-text">Widgets</span></a>
+				<li class="mm-dropdown">
+					<a href="#"><i class="menu-icon fa fa-flask"></i><span class="mm-text">服务器性能</span></a>
+					<ul>
+						<li>
+							<a tabindex="-1" href="/attack/server_performance/1"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">网关服务器性能</span></a>
+						</li>
+					</ul>
+                    <ul>
+						<li>
+							<a tabindex="-1" href="/attack/server_performance/2"><i class="menu-icon fa fa-tint"></i><span class="mm-text">被攻击服务器性能</span></a>
+						</li>
+					</ul>
 				</li>
 				<li class="mm-dropdown">
 					<a href="#"><i class="menu-icon fa fa-desktop"></i><span class="mm-text">UI elements</span></a>
@@ -327,9 +266,9 @@
 					</ul>
 				</li>
 			</ul> <!-- / .navigation -->
-			<div class="menu-content">
-				<a href="pages-invoice.html" class="btn btn-primary btn-block btn-outline dark">Create Invoice</a>
-			</div>
+{#			<div class="menu-content">#}
+{#				<a href="pages-invoice.html" class="btn btn-primary btn-block btn-outline dark">Create Invoice</a>#}
+{#			</div>#}
 		</div> <!-- / #main-menu-inner -->
 	</div> <!-- / #main-menu -->
 <!-- /4. $MAIN_MENU -->
@@ -342,76 +281,139 @@
 -->
 				<!-- Javascript -->
 				<script>
-                    var api_url = "http://controller:1984/attack/attacking_hosts_data";
+                    var api_url = "/attack/attacking_hosts_data";
 					init.push(function () {
 
 						var table = $('#jq-datatables-example').DataTable({
-                            "pageLength": 25,
+                            "pageLength": 5,
                             "ajax":{
                                 "url": api_url,
                                 "dataSrc": "hosts"
                             },
                             "columns": [
-                                { "className": "center", "data": "IP" },
-                                { "className": "center", "data": "pid" },
+                                { "className": "center", "data": "src_ip" },
                                 { "className": "center" },
-                                { "className": "center" },
-                                { "className": "center" }
+                                { "className": "center", "data": "count_s" },
+                                { "className": "center", "data": "dest_ip" }
                             ],
                             "columnDefs": [
                                 {
                                     "render": function ( data, type, row ) {
                                         return "<font color=red>"+row.count+"</font>";
                                     },
-                                    "targets": [2]
-                                },
-                                {
-                                    "render": function ( data, type, row ) {
-                                        return "173.26.140.3";
-                                    },
-                                    "targets": [3]
-                                },
-                                {
-                                    "render": function ( data, type, row ) {
-                                        return "http://underattack.com/index.php";
-                                    },
-                                    "targets": [4]
+                                    "targets": [1]
                                 }
                             ]
                         });
-
+                        table.on( 'xhr', function ( e, settings, data ) {
+                            $('#jq-datatables-example_wrapper .table-caption').text('攻击主机列表 (总请求量: '+ data.count_amount + ', 每秒总请求量: '+data.count_s_amount +')');
+                            var series = [];
+                            var legend_data = [];
+                            for(var i in data.hosts){
+                                var point = [
+                                    data.time,
+                                    data.hosts[i]['count_s']
+                                ];
+                                legend_data.push(data.hosts[i]['src_ip']);
+                                if(chart1_data[data.hosts[i]['src_ip']] == undefined){
+                                    chart1_data[data.hosts[i]['src_ip']] = []
+                                }
+                                if(chart1_data[data.hosts[i]['src_ip']].length >= 20) {
+                                    chart1_data[data.hosts[i]['src_ip']].shift();
+                                }
+                                chart1_data[data.hosts[i]['src_ip']].push(point);
+                                series.push({
+                                    name: data.hosts[i]['src_ip'],
+                                    type: 'line',
+                                    smooth: true,
+                                    showAllSymbol: true,
+                                    symbol: 'emptyCircle',
+                                    symbolSize: 1,
+                                    hoverAnimation: true,
+                                    data: chart1_data[data.hosts[i]['src_ip']]
+                                });
+                            }
+                            chart1.setOption({
+                                legend: {
+                                    data:legend_data
+                                },
+                                series: series
+                            });
+                        } );
                         setInterval( function () {
                             table.ajax.reload(null, false);
                         }, 2000 );
 
-						$('#jq-datatables-example_wrapper .table-caption').text('攻击主机列表');
+                        var chart1 = echarts.init(document.getElementById('echart1'), 'dark');
+
+                        var chart1_data = {};
+                        var option = {
+                            title: {
+                                padding: 5,
+                                textStyle: {
+                                    fontSize: 14
+                                },
+{#                                text: '每秒请求量'#}
+                            },
+                            tooltip: {
+                                trigger: 'axis'
+                            },
+                            grid: {
+                                left: '3%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true
+                            },
+                            xAxis: {
+                                type: 'time',
+                                axisLine: {
+                                    lineStyle: {
+                                        color: '#ccc'
+                                    }
+                                },
+                                splitLine: {
+                                    show: false
+                                }
+                            },
+                            yAxis: {
+                                type: 'value',
+                                axisLine: {
+                                    lineStyle: {
+                                        color: '#ccc'
+                                    }
+                                },
+                                boundaryGap: [0, '100%'],
+                                splitLine: {
+                                    show: true
+                                }
+                            }
+                        };
+                        chart1.setOption(option);
+						$('#jq-datatables-example_wrapper .table-caption').text('攻击主机列表 (总请求量: 0, 每秒总请求量: 0)');
 						$('#jq-datatables-example_wrapper .dataTables_filter input').attr('placeholder', 'Search...');
 					});
 				</script>
 				<!-- / Javascript -->
-
-				<div class="panel">
-					<div class="panel-heading">
-						<span class="panel-title"></span>
-					</div>
-					<div class="panel-body">
-						<div class="table-primary">
-							<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="jq-datatables-example">
-								<thead>
-									<tr>
-										<th>IP</th>
-										<th>进程号</th>
-										<th>数量</th>
-                                        <th>目标IP</th>
-                                        <th>目标URL</th>
-									</tr>
-								</thead>
-								<tbody>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
+                <div class="row">
+                   <h4>攻击者发起请求数</h4>
+                </div>
+                <div class="row">
+                    <div id="echart1" class="chart"></div>
+                </div>
+                <div class="table-primary" style="margin-top: 10px">
+                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="jq-datatables-example">
+                        <thead>
+                            <tr>
+                                <th>IP</th>
+                                <th>总数量</th>
+                                <th>每秒平均数量</th>
+                                <th>目标IP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
 <!-- /11. $JQUERY_DATA_TABLES -->
 
 			</div>
@@ -433,6 +435,10 @@
 <!-- Pixel Admin's javascripts -->
 <script src="/static/javascripts/bootstrap.min.js"></script>
 <script src="/static/javascripts/pixel-admin.min.js"></script>
+
+<script src="/static/javascripts/echarts.min.js"></script>
+<script src="/static/javascripts/theme/dark.js"></script>
+<script src="/static/javascripts/theme/vintage.js"></script>
 
 <script type="text/javascript">
 	init.push(function () {

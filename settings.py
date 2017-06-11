@@ -13,7 +13,7 @@ APPS = (
 # db_database = 'test'
 
 db_engine = 'mysql'
-db_server = '10.0.3.11'
-db_username = 'nova'
-db_password = 'nova'
-db_database = 'nova_api'
+db_server = '172.16.32.1'
+db_username = 'root'
+db_password = 'openstack'
+db_database = 'display'

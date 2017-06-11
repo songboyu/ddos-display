@@ -20,6 +20,6 @@ class WiseHandler(web.RequestHandler):
 
 class PageNotFound(web.RequestHandler):
 	def get(self):
-		self.set_status(404)
-		self.render("pages-404.html")
+		self.set_status(500)
+		self.render("pages-500.html")
 	

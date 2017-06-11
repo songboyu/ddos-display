@@ -20,21 +20,33 @@ class iApplication(web.Application):
         }
     
         handlers = [
-            (r"^/$", MainHandler),
-            (r"^/signin", MainHandler),
+            (r"^/$", SigninHandler),
+            (r"^/display", DisplayHandler),
+            (r"^/signin", SigninHandler),
             (r"^/static/(.*)", web.StaticFileHandler, dict(path=settings['static'])),
         ]
         
         apps = load_url_handlers()
         handlers.extend(apps)
         # custom http error handler
-        handlers.append((r"/.*", PageNotFound))
+        handlers.append((r"/aaa", PageNotFound))
         web.Application.__init__(self, handlers, **settings)
 
+class DisplayHandler(WiseHandler):
+    def get(self):
+        self.render("display/demo.html")
 
-class MainHandler(WiseHandler):
+class SigninHandler(WiseHandler):
     def get(self):
         self.render("pages-signin.html")
+
+    def post(self):
+        username = self.get_argument("signin_username", None, strip=True)
+        password = self.get_argument("signin_password", None, strip=True)
+        if username == "admin" and password == "123456":
+            self.redirect('/attack/attacking_hosts', permanent=True)
+        else:
+            self.redirect('/signin', permanent=True)
 
 class Watcher:
     def __init__(self):
